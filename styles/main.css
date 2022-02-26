@@ -1,0 +1,20 @@
+.nav-green {
+    background-color: #90CC90;
+}
+
+.brand-text {
+    font-family: Adamina;
+    font-size: xx-large;
+    font-style: italic;
+}
+
+main {
+    padding: 10px;
+}
+
+.list-group-item-classroom {
+    margin: 10px;
+    border-radius: 4px;
+    font-family: Roboto;
+    font-size: x-large;
+}
