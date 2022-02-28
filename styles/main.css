@@ -66,13 +66,23 @@ main {
   background-color: rgba(255, 0, 0, 0.1);
 }
 
-.building-name {
+.bcr-name {
   font-family: Roboto;
   text-align: center;
 }
 
 .cr-name {
   font-size: 2em;
+}
+
+.cr-current-status {
+  font-family: Roboto;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  height: auto;
 }
 
 .open {
@@ -111,4 +121,8 @@ main {
 
 .refresh {
   text-decoration: none;
+}
+
+.refresh:hover {
+  font-style: italic;
 }
