@@ -1,20 +1,83 @@
 .nav-green {
-    background-color: #90CC90;
+  background-color: #90cc90;
+  font-family: Adamina;
 }
 
 .brand-text {
-    font-family: Adamina;
-    font-size: xx-large;
-    font-style: italic;
+  font-family: Adamina;
+  font-size: xx-large;
 }
 
 main {
-    padding: 10px;
+  padding: 10px;
 }
 
-.list-group-item-classroom {
-    margin: 10px;
-    border-radius: 4px;
-    font-family: Roboto;
-    font-size: x-large;
+.cr-list-item {
+  position: relative;
+  margin: 10px;
+  border-radius: 16px;
+  border: 2px solid #000000;
+  font-family: Abel;
+  text-align: center;
+  line-height: 1;
+  padding: 10px;
+}
+
+.cr-list-item a {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+}
+
+.cr-list-item:hover {
+  box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.2);
+}
+
+.open-list-item {
+  background: rgba(0, 255, 0, 0.1);
+}
+
+.closed-list-item {
+  background-color: rgba(255, 0, 0, 0.1);
+}
+
+.building-name {
+  font-family: Roboto;
+  text-align: center;
+}
+
+.cr-name {
+  font-size: 2em;
+}
+
+.open {
+  color: green;
+  font-size: 1.5em;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  height: auto;
+}
+
+.in-use {
+  color: red;
+  font-size: 1.5em;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  height: auto;
+}
+
+.until {
+  font-size: 1.5em;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  height: auto;
 }
