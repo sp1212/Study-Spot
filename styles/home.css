@@ -1,3 +1,4 @@
+/*used for centering the site*/
 .home{
     max-width: 65%;
     margin: auto;
@@ -11,18 +12,24 @@
     padding-left: 3rem;
 }
 
+/*adds a green styling to match the rest of the site*/
 .title:hover {
     text-shadow: 1px 1px 2px #90cc90, 1px 1px 8px white;
 }
+
+/*overwriting boostrap*/
 button.btn {
     margin-top: 0.1rem;
     float: right;
     color:#163016;
     background-color: #90cc90;
 }
+
+
 div.card {
     width: 15rem;
 }
+
 
 .card{
     font-family: Abel, serif;
@@ -40,7 +47,7 @@ div.card {
     padding: 0.5rem 0.5rem;
 }
 
-
+/*search bar*/
 .search {
     /*background-color: #90cc90;*/
     border-radius: 19px;
@@ -51,8 +58,7 @@ div.card {
 }
 
 
-
-.container1 span{
+.container span{
     border-radius: 19px;
     background-color: #90cc90;
     width: 20%;
@@ -62,15 +68,11 @@ div.card {
 }
 
 
-.container1 span a {
+.container span a {
     text-decoration: none;
     color: #163016;
 }
 
-section div a {
-    text-decoration: none;
-    color: #163016;
-}
 
 /*used to indicate that a classroom is open*/
 .status{
