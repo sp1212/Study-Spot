@@ -5,22 +5,29 @@
 }
 
 .title {
+    font-family: Adamina, serif;
+    text-shadow: 1px 1px 2px grey, 1px 1px 8px white;
+}
 
+button {
+    float: right;
 }
 
 .card{
     position: relative;
     margin: auto;
+    margin-block: 3%;
 }
 
 .search {
     background-color: #F2F4F8;
+    margin-block: 2%;
 }
+
 
 .container1 span, .container2 span {
     border-radius: 19px;
     background-color: #F3F3F3;
     width: 20%;
-    margin-left: 5%;
-    margin-top: 10%;
+    margin: 2% 2% 2% 3%;
 }
