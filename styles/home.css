@@ -1,0 +1,26 @@
+.home{
+    max-width: 600px;
+    margin: auto;
+    text-align: center;
+}
+
+.title {
+
+}
+
+.card{
+    position: relative;
+    margin: auto;
+}
+
+.search {
+    background-color: #F2F4F8;
+}
+
+.container1 span, .container2 span {
+    border-radius: 19px;
+    background-color: #F3F3F3;
+    width: 20%;
+    margin-left: 5%;
+    margin-top: 10%;
+}
