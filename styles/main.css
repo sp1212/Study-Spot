@@ -26,7 +26,7 @@ main {
 
 /* breadcrumb */
 .breadcrumb {
-  --bs-breadcrumb-divider: '>';
+  --bs-breadcrumb-divider: ">";
 }
 
 .breadcrumb-item {

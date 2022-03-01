@@ -1,84 +1,71 @@
 /*used for centering the site*/
-.home{
-    max-width: 65%;
-    margin: auto;
-    text-align: center;
+.home {
+  max-width: 65%;
+  margin: auto;
+  text-align: center;
 }
 
 .title {
-    font-family: Adamina, serif;
-    text-shadow: 1px 1px 2px grey, 1px 1px 8px white;
-    display: inline;
+  font-family: Adamina, serif;
+  text-shadow: 1px 1px 2px grey, 1px 1px 8px white;
+  display: inline;
 }
 
 /*adds a green styling to match the rest of the site*/
 .title:hover {
-    text-shadow: 1px 1px 2px #90cc90, 1px 1px 8px white;
+  text-shadow: 1px 1px 2px #90cc90, 1px 1px 8px white;
 }
 
 /*overwriting bootstrap*/
 button.btn {
-    margin-top: 0.1rem;
-    float: right;
-    color:#163016;
-    background-color: #90cc90;
+  margin-top: 0.1rem;
+  float: right;
+  color: #163016;
+  background-color: #90cc90;
 }
-
 
 div.card {
-    width: 15rem;
+  width: 15rem;
 }
 
-
-.card{
-    font-family: Abel, serif;
-    font-style: normal;
-    font-weight: normal;
-    position: relative;
-    margin: auto;
-    margin-block: 3%;
+.card {
+  font-family: Abel, serif;
+  font-style: normal;
+  font-weight: normal;
+  position: relative;
+  margin: auto;
+  margin-block: 3%;
 }
-
-
 
 .card-body {
-    flex: 1 1 auto;
-    padding: 0.5rem 0.5rem;
+  flex: 1 1 auto;
+  padding: 0.5rem 0.5rem;
 }
 
 /*search bar*/
 .search {
-    /*background-color: #90cc90;*/
-    border-radius: 19px;
-    margin-block: 2%;
-    cursor: pointer;
-    /*border: 3px solid #90cc90;*/
-
+  /*background-color: #90cc90;*/
+  border-radius: 19px;
+  margin-block: 2%;
+  cursor: pointer;
+  /*border: 3px solid #90cc90;*/
 }
 
-
-.container span{
-    border-radius: 19px;
-    background-color: #90cc90;
-    width: 20%;
-    margin: 3% 2% 3% 3%;
-    white-space: nowrap;
-    padding: 2px;
+.container span {
+  border-radius: 19px;
+  background-color: #90cc90;
+  width: 20%;
+  margin: 3% 2% 3% 3%;
+  white-space: nowrap;
+  padding: 2px;
 }
-
 
 .container span a {
-    text-decoration: none;
-    color: #163016;
+  text-decoration: none;
+  color: #163016;
 }
-
 
 /*used to indicate that a classroom is open*/
-.status{
-    color: green;
+.status {
+  color: green;
 }
-
-
-
-
-
