@@ -1,5 +1,5 @@
 .home{
-    max-width: 600px;
+    max-width: 70%;
     margin: auto;
     text-align: center;
 }
@@ -7,17 +7,39 @@
 .title {
     font-family: Adamina, serif;
     text-shadow: 1px 1px 2px grey, 1px 1px 8px white;
+    display: inline;
+    padding-left: 3rem;
 }
 
-button {
+.title:hover {
+    text-shadow: 1px 1px 2px #90cc90, 1px 1px 8px white;
+}
+button.btn {
+    margin-top: 0.1rem;
     float: right;
+    color:#163016;
+    background-color: #90cc90;
+}
+div.card {
+    width: 15rem;
 }
 
 .card{
+    font-family: Abel, serif;
+    font-style: normal;
+    font-weight: normal;
     position: relative;
     margin: auto;
     margin-block: 3%;
 }
+
+
+
+.card-body {
+    flex: 1 1 auto;
+    padding: 0.5rem 0.5rem;
+}
+
 
 .search {
     background-color: #F2F4F8;
@@ -27,7 +49,16 @@ button {
 
 .container1 span, .container2 span {
     border-radius: 19px;
-    background-color: #F3F3F3;
+    background-color: #90cc90;
     width: 20%;
     margin: 2% 2% 2% 3%;
+}
+
+.container1 span a {
+    text-decoration: none;
+    color: #163016;
+}
+
+.status{
+    color: green;
 }
