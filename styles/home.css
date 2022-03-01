@@ -1,5 +1,5 @@
 .home{
-    max-width: 70%;
+    max-width: 65%;
     margin: auto;
     text-align: center;
 }
@@ -42,23 +42,42 @@ div.card {
 
 
 .search {
-    background-color: #F2F4F8;
+    /*background-color: #90cc90;*/
+    border-radius: 19px;
     margin-block: 2%;
+    cursor: pointer;
+    /*border: 3px solid #90cc90;*/
+
 }
 
 
-.container1 span, .container2 span {
+
+.container1 span{
     border-radius: 19px;
     background-color: #90cc90;
     width: 20%;
-    margin: 2% 2% 2% 3%;
+    margin: 3% 2% 3% 3%;
+    white-space: nowrap;
+    padding: 2px;
 }
+
 
 .container1 span a {
     text-decoration: none;
     color: #163016;
 }
 
+section div a {
+    text-decoration: none;
+    color: #163016;
+}
+
+/*used to indicate that a classroom is open*/
 .status{
     color: green;
 }
+
+
+
+
+
