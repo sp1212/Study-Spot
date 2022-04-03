@@ -134,3 +134,7 @@ dmypy.json
 .pyre/
 .DS_Store
 
+
+# personal ignores
+HW5/
+db/Config.php
