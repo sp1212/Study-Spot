@@ -19,7 +19,7 @@
     <header>
         <!--Top navigation bar-->
         <div id="top-navbar-placeholder">
-
+            <?php include ("top-navbar.php"); ?>
         </div>
     </header>
 
@@ -28,9 +28,9 @@
         <div class="row">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="index.php">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Buildings</a></li>
-                    <li class="breadcrumb-item"><a href="building-sample.html">Rice Hall</a></li>
+                    <li class="breadcrumb-item"><a href="building-sample.php">Rice Hall</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Rice Hall 011</li>
                 </ol>
             </nav>
@@ -52,7 +52,7 @@
                     </div>
                     <div class="col-9">
                         <div class="row cr-list-item open-list-item">
-                            <a href="classroom-sample.html" title="current-status"></a>
+                            <a href="classroom-sample.php" title="current-status"></a>
                             <div class="col open">
                                 Open
                             </div>
@@ -92,7 +92,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
         </script>
-    <script src="js/top-navbar.js"></script>
 </body>
 
 </html>

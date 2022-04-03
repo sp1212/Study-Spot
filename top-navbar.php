@@ -4,7 +4,7 @@
 <nav class="navbar navbar-expand-lg navbar-light nav-green">
     <div class="container-fluid">
         <!--Branded-->
-        <a class="navbar-brand brand-text" href="index.html">Study Spot</a>
+        <a class="navbar-brand brand-text" href="index.php">Study Spot</a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
