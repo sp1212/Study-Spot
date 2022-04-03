@@ -7,6 +7,6 @@ class Config
         "host" => "localhost",
         "user" => "root",
         "pass" => "password",
-        "database" => "pending",
+        "database" => "studyspot",
     ];
 }
