@@ -28,6 +28,9 @@ class SiteController {
             case "home":
                 $this->home();
                 break;
+            case "profile":
+                $this->profile();
+                break;
             case "logout":
                 $this->logout();
             case "login":
@@ -53,6 +56,7 @@ class SiteController {
                 if (password_verify($_POST["password"], $data[0]["password"])) {
                     $_SESSION["email"] = $data[0]["email"];
                     $_SESSION["userid"] = $data[0]["id"];
+                    $_SESSION["timezone"] = $data[0]["timezone"];
                     header("Location: ?command=home");
                 } else {
                     $error_msg = "Invalid password.";
@@ -67,6 +71,7 @@ class SiteController {
                     $_SESSION["email"] = $_POST["email"];
                     $data = $this->db->query("select * from ss_users where email = ?;", "s", $_POST["email"]);
                     $_SESSION["userid"] = $data[0]["id"];
+                    $_SESSION["timezone"] = $data[0]["timezone"];
                     header("Location: ?command=home");
                 }
             }
@@ -85,6 +90,16 @@ class SiteController {
 
     public function classroom() {
         include ("classroom-sample.php");
+    }
+
+    public function profile() {
+        if (isset($_POST["timezone"])) {
+            $data = $this->db->query("update ss_users set timezone = ? where ss_users.id = ?;", "ss", $_POST["timezone"], $_POST["userid"]);
+            $_SESSION['timezone'] = $_POST["timezone"];
+            header("Location: ?command=profile");
+        }
+
+        include ("profile.php");
     }
 
     public function logout() {

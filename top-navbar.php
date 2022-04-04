@@ -35,17 +35,23 @@
 
             <!--User info and profile links-->
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Account
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <?php
                         if (isset($_SESSION["email"]))
                         {
-                            echo "<a class=\"nav-link active\" aria-current=\"page\" href=\"?command=logout\">Logout</a>";
+                            echo "<a class=\"dropdown-item\" aria-current=\"page\" href=\"?command=profile\">Profile</a>\n";
+                            echo "<a class=\"dropdown-item\" aria-current=\"page\" href=\"?command=logout\">Logout</a>";
                         }
                         else
                         {
-                            echo "<a class=\"nav-link active\" aria-current=\"page\" href=\"?command=login\">Login</a>";
+                            echo "<a class=\"dropdown-item\" aria-current=\"page\" href=\"?command=login\">Login</a>";
                         }
                     ?>
+                    </ul>
                 </li>
             </ul>
 

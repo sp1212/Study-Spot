@@ -15,11 +15,11 @@
         </header>
 
         <div class="container" style="margin-top: 15px;">
-            <div class="row col-xs-8" style="text-align: center";>
-                <h1 style="font-family: roboto;">Account Login & Creation</h1>
+            <div class="row col-xs-8 bcr-name">
+                <h1>Account Login & Creation</h1>
                 <p>Please enter your username and password to login to an existing account or to create a new one.</p>
             </div>
-            <div class="row justify-content-center">
+            <div class="row justify-content-center bcr-name">
                 <div class="col-4">
                 <form action="?command=login" method="post">
                     <div class="mb-3">
