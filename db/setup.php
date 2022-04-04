@@ -12,15 +12,24 @@ $db = new mysqli(Config::$db["host"], Config::$db["user"], Config::$db["pass"], 
 
 $db->query("drop table if exists secretspot;");
 
-//$db->query(
-//    "create table secretspot (
-//            --TODO
-//          );");
+$db->query(
+    "create table secretspot (
+            id int not null auto_increment,
+            user_id int not null,
+            name text not null,
+            votes int not null,
+            PRIMARY KEY (id)
+          );");
 
-//$db->query(
-//    "create table user (
-//           /*TODO*/
-//          );");
+$db->query("drop table if exists user;");
+$db->query(
+    "create table user (
+           id int not null auto_increment,
+           name text not null,
+           email text not null,
+           password text not null,
+           primary key (id)
+          );");
 
 $db->query("drop table if exists building;");
 $db->query(
@@ -30,10 +39,20 @@ $db->query(
            PRIMARY KEY (id)
           );");
 
-//$db->query(
-//    "create table classroom (
-//           /*TODO*/
-//          );");
+$db->query("drop table if exists classroom;");
+$db->query(
+    "create table classroom (
+           number int not null,
+           section int not null,
+           mnemonic varchar(4) not null,
+           instructor text not null,
+           room text not null,
+           building text not null,
+           day1 datetime,
+           day2 datetime,
+           day3 datetime
+          );");
+
 $resource = fopen("../dclean/uvabuildings.csv", 'r');
 while (($building = fgetcsv($resource)) != FALSE) {
     if($building[1] == 'Web-Based Course-No class mtgs')
