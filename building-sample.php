@@ -93,7 +93,10 @@
                 </div>
                 <!--Page last updated info-->
                 <p class="as-of">
-                    Updated 1:32pm<br>
+                    <?php
+                        $now = new DateTime(null, new DateTimeZone('America/New_York'));
+                        echo "Updated " . $now->format('g:i:s A') . "<br>";
+                    ?>
                     <a class="refresh" href="">(Refresh to update)</a>
                 </p>
             </div>

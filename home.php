@@ -39,7 +39,7 @@
         <!--search bar-->
         <form class="search-wrap">
             <div class="search">
-                <input type="image" id="submit" class="search-button" src="images/icons8-search.svg"
+                <img type="image" id="submit" class="search-button" src="images/icons8-search.svg"
                     alt="search button">
                 <input type="text" id="text-search" placeholder="Find a building">
                 <!--look into fontawesome.com-->

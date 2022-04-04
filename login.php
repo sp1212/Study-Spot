@@ -5,7 +5,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Login</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous"> 
-        <link rel="stylesheet" href="styles/home.css" />
         <link rel="stylesheet" href="styles/main.css" />
     </head>
     <body>
@@ -17,7 +16,7 @@
 
         <div class="container" style="margin-top: 15px;">
             <div class="row col-xs-8" style="text-align: center";>
-                <h1>Account Login & Creation</h1>
+                <h1 style="font-family: roboto;">Account Login & Creation</h1>
                 <p>Please enter your username and password to login to an existing account or to create a new one.</p>
             </div>
             <div class="row justify-content-center">
@@ -25,11 +24,11 @@
                 <form action="?command=login" method="post">
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email"/>
+                        <input type="email" class="form-control" id="email" name="email" required/>
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" name="password"/>
+                        <input type="password" class="form-control" id="password" name="password" required/>
                     </div>
                     <?php 
                     if (strcmp($error_msg, "") != 0)

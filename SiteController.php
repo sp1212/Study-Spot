@@ -46,13 +46,16 @@ class SiteController {
             $data = $this->db->query("select * from ss_users where email = ?;", "s", $_POST["email"]);
             if ($data === false) {
                 $error_msg = "Error checking for user.";
+            } else if (preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $_POST["email"]) ? FALSE : TRUE) {
+                $error_msg = "Invalid email address.";
+                // regex source:  https://www.w3schools.in/php/examples/email-validation-php-regular-expression
             } else if (!empty($data)) {
                 if (password_verify($_POST["password"], $data[0]["password"])) {
                     $_SESSION["email"] = $data[0]["email"];
                     $_SESSION["userid"] = $data[0]["id"];
                     header("Location: ?command=home");
                 } else {
-                    $error_msg = "Wrong password.";
+                    $error_msg = "Invalid password.";
                 }
             } else { // empty, no user found
                 $insert = $this->db->query("insert into ss_users (email, password) values (?, ?);", 
