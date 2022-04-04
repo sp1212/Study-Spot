@@ -28,9 +28,9 @@
         <div class="row">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                    <li class="breadcrumb-item"><a href="?command=home">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Buildings</a></li>
-                    <li class="breadcrumb-item"><a href="building-sample.php">Rice Hall</a></li>
+                    <li class="breadcrumb-item"><a href="?command=building">Rice Hall</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Rice Hall 011</li>
                 </ol>
             </nav>
@@ -52,7 +52,7 @@
                     </div>
                     <div class="col-9">
                         <div class="row cr-list-item open-list-item">
-                            <a href="classroom-sample.php" title="current-status"></a>
+                            <a href="?command=classroom" title="current-status"></a>
                             <div class="col open">
                                 Open
                             </div>

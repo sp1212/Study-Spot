@@ -137,4 +137,5 @@ dmypy.json
 
 # personal ignores
 HW5/
-db/Config.php
+Config.php
+notes.txt
