@@ -60,6 +60,10 @@ class SiteController {
 
     // Display the login page (and handle login logic)
     public function login() {
+        //get the buildings list from the start
+        $data = $this->db->query("SELECT * FROM building");
+        setcookie("buildings", json_encode($data[0]), time() + 7200); //make sure cookie lasts as long as session
+
         $error_msg = "";
 
         if (isset($_POST["email"])) {
@@ -72,6 +76,15 @@ class SiteController {
                     $_SESSION["email"] = $data[0]["email"];
                     $_SESSION["userid"] = $data[0]["id"];
                     $_SESSION["timezone"] = $data[0]["timezone"];
+                    //setcookie("searches", $data[0]["searches"]); //their default searches
+                    $searches = $data[0]["searches"];
+                    $searches = trim($searches, "[]");
+                    //print_r($searches);
+                    $searches = str_replace("\"", "", $searches);
+                    //$searches = $_COOKIE["searches"];
+                    //echo gettype($searches);
+                    $searches = explode(",", $searches);
+                    $_SESSION["searches"] = $searches;
                     header("Location: ?command=home");
                 } else {
                     $error_msg = "Invalid password.";
@@ -114,6 +127,15 @@ class SiteController {
                     $_SESSION["name"] = $_POST["name"];
                     $_SESSION["email"] = $_POST["email"];
                     $data = $this->db->query("select * from ss_user where email = ?;", "s", $_POST["email"]);
+                    //setcookie("searches", $data[0]["searches"]); //their default searches
+                    $searches = $data[0]["searches"];
+                    $searches = trim($searches, "[]");
+                    //print_r($searches);
+                    $searches = str_replace("\"", "", $searches);
+                    //$searches = $_COOKIE["searches"];
+                    //echo gettype($searches);
+                    $searches = explode(",", $searches);
+                    $_SESSION["searches"] = $searches;
                     $_SESSION["userid"] = $data[0]["id"];
                     $_SESSION["timezone"] = $data[0]["timezone"];
                     header("Location: ?command=home");
@@ -125,11 +147,13 @@ class SiteController {
     }
 
     public function home() {
+        if(isset($_POST["search"])){
+            array_unshift($_SESSION["searches"], $_POST["search"]);
+           array_pop($_SESSION["searches"]);
+        }
         include("templates/home.php");
         //store list of buildings as cookie array
-        $data = $this->db->query("SELECT * FROM building");
-        print_r($data);
-        setcookie("buildings", json_encode($data[0]), time() + 3600);
+
 
     }
 
@@ -153,6 +177,8 @@ class SiteController {
 
     public function logout() {
         session_destroy();
+        setcookie("searches", "", time()-7200);
+        setcookie("buildings", "", time()-7200);
         header("Location: ?command=home");
     }
 

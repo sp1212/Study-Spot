@@ -24,6 +24,8 @@ $db->query(
 
 $searches =json_encode(array("Monroe Hall", "Bryan Hall", "Brown Hall", "Gibson Hall", "Wilson Hall",
     "Chemistry Bldg", "Campbell Hall", "Robertson Hall"));
+echo $searches;
+
 
 $db->query("drop table if exists ss_user;");
 $db->query(

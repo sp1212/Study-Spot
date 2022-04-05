@@ -2,7 +2,7 @@
 // Sources Used:  Sample trivia game code from lecture
 /*
  * Sources: https://www.php.net/manual/en/function.strpos.php
- *
+ * https://www.w3schools.com/php/php_json.asp
  */
 
 session_start();

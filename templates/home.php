@@ -44,26 +44,25 @@
         </div>
 
         <!--search bar-->
-        <form class="search-wrap">
+        <form class="search-wrap" action="?command=home" method="post">
             <div class="search">
                 <img type="image" id="submit" class="search-button" src="./images/icons8-search.svg"
                     alt="search button">
-                <input type="text" id="text-search" placeholder="Find a building">
+                <input type="text" id="text-search" placeholder="Find a building" name="search">
                 <!--look into fontawesome.com-->
             </div>
         </form>
 
         <!--    building suggestions -->
         <div class="container">
-            <span><a href="?command=building"> Rice Hall</a> </span>
-            <span> Monroe Hall </span>
-            <span> Bryan Hall </span>
-            <span> Brown Hall </span>
-            <span> Gibson Hall </span>
-            <span> Wilson Hall </span>
-            <span> Chemistry Bldg </span>
-            <span> Campbell Hall </span>
-            <span> Robertson Hall </span>
+            <span> <a href="?command=building"><?=$_SESSION["searches"][0]?> </a></span>
+            <span> <a href="?command=building"><?=$_SESSION["searches"][1]?> </a></span>
+            <span> <a href="?command=building"><?=$_SESSION["searches"][2]?> </a></span>
+            <span> <a href="?command=building"><?=$_SESSION["searches"][3]?> </a></span>
+            <span> <a href="?command=building"><?=$_SESSION["searches"][4]?> </a></span>
+            <span> <a href="?command=building"><?=$_SESSION["searches"][5]?> </a></span>
+            <span> <a href="?command=building"><?=$_SESSION["searches"][6]?> </a></span>
+            <span> <a href="?command=building"><?=$_SESSION["searches"][7]?> </a></span>
         </div>
     </div>
 
