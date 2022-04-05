@@ -154,11 +154,12 @@ class SiteController {
         if(isset($_POST["search"])){
             array_unshift($_SESSION["searches"], $_POST["search"]);
            array_pop($_SESSION["searches"]);
+           unset($_POST["search"]);
+
         }
+        unset($_POST["search"]);
         include("templates/home.php");
         //store list of buildings as cookie array
-
-
     }
 
     public function building() {
@@ -188,8 +189,9 @@ class SiteController {
 
     public function logout() {
         session_destroy();
-        setcookie("searches", "", time()-7200);
         setcookie("buildings", "", time()-7200);
+        $rtn = json_encode($_SESSION["searches"]);
+        $this->db->query("UPDATE ss_user SET searches=? WHERE id=?", "si", $rtn, $_SESSION["userid"]);
         header("Location: ?command=home");
     }
 
