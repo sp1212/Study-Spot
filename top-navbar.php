@@ -43,12 +43,13 @@
                     <?php
                         if (isset($_SESSION["email"]))
                         {
-                            echo "<a class=\"dropdown-item\" aria-current=\"page\" href=\"?command=profile\">Profile</a>\n";
+                            echo "<a class=\"dropdown-item\" aria-current=\"page\" href=\"?command=profile\">View Profile</a>\n";
                             echo "<a class=\"dropdown-item\" aria-current=\"page\" href=\"?command=logout\">Logout</a>";
                         }
                         else
                         {
                             echo "<a class=\"dropdown-item\" aria-current=\"page\" href=\"?command=login\">Login</a>";
+                            echo "<a class=\"dropdown-item\" aria-current=\"page\" href=\"?command=createaccount\">Create Acc</a>";
                         }
                     ?>
                     </ul>
