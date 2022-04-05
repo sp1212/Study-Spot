@@ -1,6 +1,6 @@
 <?php
 /*
- * Sources:
+ * Sources: https://www.php.net/manual/en/function.strpos.php
  *
  */
 session_start();
