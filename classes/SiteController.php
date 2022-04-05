@@ -63,7 +63,7 @@ class SiteController {
         $error_msg = "";
 
         if (isset($_POST["email"])) {
-            $data = $this->db->query("select * from ss_users where email = ?;", "s", $_POST["email"]);
+            $data = $this->db->query("SELECT * FROM ss_user WHERE email = ?;", "s", $_POST["email"]);
             if ($data === false) {
                 $error_msg = "Error checking for user.";
             }
@@ -82,14 +82,14 @@ class SiteController {
             }
         }
 
-        include ("login.php");
+        include("templates/login.php");
     }
 
     public function createaccount() {
         $error_msg = "";
 
         if (isset($_POST["email"])) {
-            $data = $this->db->query("select * from ss_users where email = ?;", "s", $_POST["email"]);
+            $data = $this->db->query("select * from ss_user where email = ?;", "s", $_POST["email"]);
             if ($data === false) {
                 $error_msg = "Error checking for user.";
             }
@@ -104,15 +104,16 @@ class SiteController {
                 // regex source:  https://www.w3schools.in/php/examples/email-validation-php-regular-expression
             }
             else { // empty, no user found
-                $insert = $this->db->query("insert into ss_users (email, password) values (?, ?);", 
-                        "ss", $_POST["email"], 
+                $insert = $this->db->query("insert into ss_user (name, email, password) values (?, ?, ?);",
+                        "sss", $_POST["name"], $_POST["email"],
                         password_hash($_POST["password"], PASSWORD_DEFAULT));
                 if ($insert === false) {
                     $error_msg = "Error inserting user";
                 }
                 else {
+                    $_SESSION["name"] = $_POST["name"];
                     $_SESSION["email"] = $_POST["email"];
-                    $data = $this->db->query("select * from ss_users where email = ?;", "s", $_POST["email"]);
+                    $data = $this->db->query("select * from ss_user where email = ?;", "s", $_POST["email"]);
                     $_SESSION["userid"] = $data[0]["id"];
                     $_SESSION["timezone"] = $data[0]["timezone"];
                     header("Location: ?command=home");
@@ -120,29 +121,34 @@ class SiteController {
             }
         }
 
-        include ("createaccount.php");
+        include("templates/createaccount.php");
     }
 
     public function home() {
-        include("home.php");
+        include("templates/home.php");
+        //store list of buildings as cookie array
+        $data = $this->db->query("SELECT * FROM building");
+        print_r($data);
+        setcookie("buildings", json_encode($data[0]), time() + 3600);
+
     }
 
     public function building() {
-        include ("building-sample.php");
+        include("templates/building-sample.php");
     }
 
     public function classroom() {
-        include ("classroom-sample.php");
+        include("templates/classroom-sample.php");
     }
 
     public function profile() {
         if (isset($_POST["timezone"])) {
-            $data = $this->db->query("update ss_users set timezone = ? where ss_users.id = ?;", "ss", $_POST["timezone"], $_POST["userid"]);
+            $data = $this->db->query("update ss_user set timezone = ? where ss_user.id = ?;", "ss", $_POST["timezone"], $_POST["userid"]);
             $_SESSION['timezone'] = $_POST["timezone"];
             header("Location: ?command=profile");
         }
 
-        include ("profile.php");
+        include("templates/profile.php");
     }
 
     public function logout() {

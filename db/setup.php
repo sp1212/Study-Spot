@@ -22,16 +22,20 @@ $db->query(
             PRIMARY KEY (id)
           );");
 
-$db->query("drop table if exists user;");
+$searches =json_encode(array("Monroe Hall", "Bryan Hall", "Brown Hall", "Gibson Hall", "Wilson Hall",
+    "Chemistry Bldg", "Campbell Hall", "Robertson Hall"));
+
+$db->query("drop table if exists ss_user;");
 $db->query(
-    "create table user (
+    "create table ss_user (
            id int not null auto_increment,
            name text not null,
            email text not null,
            password text not null,
-           searches JSON,
+           searches JSON DEFAULT ?,
+           timezone VARCHAR(64) DEFAULT 'America/New_York',
            primary key (id)
-          );");
+          );", "s", $searches);
 
 $db->query("drop table if exists building;");
 $db->query(
