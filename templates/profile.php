@@ -27,16 +27,13 @@
         <div class="row bcr-name">
             <h2>User Profile</h2>
         </div>
-        <div class="row">
-            <div class="col-lg-2">
-
+        <div class="row justify-content-center">
+            <div class="row bcr-name">
+                <h4><?=$_SESSION['name']?></h4>
+                <h4><?=$_SESSION['email']?></h4>
+                <h4><?=$_SESSION['timezone']?></h4>
             </div>
-            <div class="col">
-                <div class="row bcr-name">
-                    <h4><?=$_SESSION['email']?></h4>
-                    <h4><?=$_SESSION['timezone']?></h4>
-                </div>
-                <div class="row">
+            <div class="col-7">
                 <form action="?command=profile" method="post">
                     <div class="mb-3">
                         <label for="timezone" class="form-label">Time Zone</label>
@@ -52,18 +49,14 @@
                         <button type="submit" class="btn btn-success">Update</button>
                     </div>
                 </form>
-                </div>
-                <p class="as-of">
-                    <?php
-                        $now = new DateTime(null, new DateTimeZone($_SESSION['timezone']));
-                        echo "Updated " . $now->format('g:i:s A') . "<br>";
-                    ?>
-                    <a class="refresh" href="">(Refresh to update)</a>
-                </p>
             </div>
-            <div class="col-lg-2">
-
-            </div>
+            <p class="as-of">
+                <?php
+                    $now = new DateTime(null, new DateTimeZone($_SESSION['timezone']));
+                    echo "Updated " . $now->format('g:i:s A') . "<br>";
+                ?>
+                <a class="refresh" href="">(Refresh to update)</a>
+            </p>
         </div>
     </main>
 
