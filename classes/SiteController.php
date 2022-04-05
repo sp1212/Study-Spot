@@ -42,6 +42,9 @@ class SiteController {
             case "home":
                 $this->home();
                 break;
+            case "jsonbuildings":
+                $this->jsonbuildings();
+                break;
             case "profile":
                 $this->profile();
                 break;
@@ -70,6 +73,7 @@ class SiteController {
             else if (!empty($data)) {
                 if (password_verify($_POST["password"], $data[0]["password"])) {
                     $_SESSION["email"] = $data[0]["email"];
+                    $_SESSION["name"] = $data[0]["name"];
                     $_SESSION["userid"] = $data[0]["id"];
                     $_SESSION["timezone"] = $data[0]["timezone"];
                     header("Location: ?command=home");
@@ -149,6 +153,13 @@ class SiteController {
         }
 
         include("templates/profile.php");
+    }
+
+    // reference:  https://www.tutorialrepublic.com/faq/how-to-return-json-from-a-php-script.php
+    public function jsonbuildings() {
+        $data = $this->db->query("select * from building");
+        header("Content-Type: application/json");
+        echo json_encode($data, JSON_PRETTY_PRINT);
     }
 
     public function logout() {

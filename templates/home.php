@@ -24,48 +24,56 @@
         </div>
     </header>
 
-    <div class="home">
-        <h1 class="title">Study Spot</h1>
-
-        <h2 class="as-of">
-            <a class="refresh" href=""><?php
-                $now = new DateTime(null, new DateTimeZone($_SESSION['timezone']));
-                echo $now->format('g:i A') . "<br>";
-            ?></a>
-        </h2>
-
-        <!--    opening card immediately gives user information -->
-        <div class="card">
-            <div class="card-body">
-                <h6 class="card-subtitle mb-2 text-muted"><span class="status">Open now</span>: Rice 130</h6>
-                <h6 class="card-subtitle mb-2 text-muted"><span class="distance">Distance</span>: 78 ft away</h6>
-                <h6 class="card-subtitle mb-2 text-muted"><span class="next">At 1:30</span>: Olsson 005</h6>
+    <main>
+        <div class="home">
+            <h1 class="title">Study Spot</h1>
+    
+            <h2 class="as-of">
+                <a class="refresh" href="">
+                    <?php
+                        $now = new DateTime(null, new DateTimeZone($_SESSION['timezone']));
+                        echo $now->format('g:i A') . "<br>";
+                    ?>
+                </a>
+            </h2>
+    
+            <!--    opening card immediately gives user information -->
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-subtitle mb-2 text-muted"><span class="status">Open now</span>: Rice 130</h6>
+                    <h6 class="card-subtitle mb-2 text-muted"><span class="distance">Distance</span>: 78 ft away</h6>
+                    <h6 class="card-subtitle mb-2 text-muted"><span class="next">At 1:30</span>: Olsson 005</h6>
+                </div>
+            </div>
+    
+            <!--search bar-->
+            <form class="search-wrap">
+                <div class="search">
+                    <img type="image" id="submit" class="search-button" src="./images/icons8-search.svg"
+                        alt="search button">
+                    <input type="text" id="text-search" placeholder="Find a building">
+                    <!--look into fontawesome.com-->
+                </div>
+            </form>
+    
+            <!--    building suggestions -->
+            <div class="container">
+                <span><a href="?command=building"> Rice Hall</a> </span>
+                <span> Monroe Hall </span>
+                <span> Bryan Hall </span>
+                <span> Brown Hall </span>
+                <span> Gibson Hall </span>
+                <span> Wilson Hall </span>
+                <span> Chemistry Bldg </span>
+                <span> Campbell Hall </span>
+                <span> Robertson Hall </span>
+            </div>
+    
+            <div class="row justify-content-center" style="margin: 10px;">
+                <a href="?command=jsonbuildings" role="button" style="width: auto; display: inline-block;">Buildings JSON</a>
             </div>
         </div>
-
-        <!--search bar-->
-        <form class="search-wrap">
-            <div class="search">
-                <img type="image" id="submit" class="search-button" src="./images/icons8-search.svg"
-                    alt="search button">
-                <input type="text" id="text-search" placeholder="Find a building">
-                <!--look into fontawesome.com-->
-            </div>
-        </form>
-
-        <!--    building suggestions -->
-        <div class="container">
-            <span><a href="?command=building"> Rice Hall</a> </span>
-            <span> Monroe Hall </span>
-            <span> Bryan Hall </span>
-            <span> Brown Hall </span>
-            <span> Gibson Hall </span>
-            <span> Wilson Hall </span>
-            <span> Chemistry Bldg </span>
-            <span> Campbell Hall </span>
-            <span> Robertson Hall </span>
-        </div>
-    </div>
+    </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
