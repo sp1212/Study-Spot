@@ -1,4 +1,8 @@
 <?php
+
+// Link to site hosted on CS 4640 Server:
+// https://cs4640.cs.virginia.edu/scp4exq/project/sprint3/
+
 // Sources Used:  Sample trivia game code from lecture
 /*
  * Sources: https://www.php.net/manual/en/function.strpos.php

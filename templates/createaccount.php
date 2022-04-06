@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="en">
 <html>
     <head>
         <meta charset="UTF-8">  
@@ -6,6 +7,9 @@
         <title>Account Creation</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous"> 
         <link rel="stylesheet" href="./styles/main.css" />
+
+        <meta name="author" content="Joey Elsisi, Stuart Paine">
+        <meta name="description" content="Study Spot Project">
     </head>
     <body>
         <header>
@@ -52,7 +56,7 @@
                 <div class="row justify-content-center bcr-name" style="margin-top: 80px;">
                     <div class="col-4">
                         <p>Existing user?</p>
-                        <a class="btn btn-secondary" href="?command=login" role="button">Login</a>
+                        <a class="btn btn-secondary" href="?command=login">Login</a>
                     </div>
                 </div>
             </div>
