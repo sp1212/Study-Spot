@@ -4,6 +4,7 @@
 .home {
   max-width: 65%;
   margin: auto;
+  padding: 12px;
   text-align: center;
 }
 
@@ -50,6 +51,7 @@ div.card {
   border-radius: 19px;
   margin-block: 2%;
   cursor: pointer;
+  margin: auto;
   /*border: 3px solid #90cc90;*/
 }
 
@@ -57,14 +59,14 @@ div.card {
   border-radius: 19px;
   background-color: #90cc90;
   width: 20%;
-  margin: 3% 2% 3% 3%;
+  margin: 20px 20px 20px 20px;
   white-space: nowrap;
-  padding: 2px;
+  padding: 6px;
 }
 
 .container span a {
   text-decoration: none;
-  color: #163016;
+  color: black;
 }
 
 /*used to indicate that a classroom is open*/

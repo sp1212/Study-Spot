@@ -25,11 +25,11 @@
     </header>
 
     <main>
-        <div class="home">
+        <div class="home row">
             <h1 class="title">Study Spot</h1>
     
             <h2 class="as-of">
-                <a class="refresh" href="">
+                <a class="refresh" href="" style="color: green">
                     <?php
                         $now = new DateTime(null, new DateTimeZone($_SESSION['timezone']));
                         echo $now->format('g:i A') . "<br>";
@@ -46,30 +46,32 @@
                 </div>
             </div>
         </div>
+        <div class="home row">
+            <!--look into fontawesome.com-->
+            <!--search bar-->
+            <form class="search-wrap" action="?command=home" method="post">
+                <div class="mb-3">
+                    <input type="text" class="form-control" id="text-search" placeholder="Find a building" name="search" required>
+                    <input type="image" id="submit" class="search-button" src="./images/icons8-search.svg"
+                        alt="search button">
+                </div>
+            </form>
+        </div>
+        <div class="home row">
+            <!--    building suggestions -->
+            <div class="container">
+                <span><a href="?command=building"><?=$_SESSION["searches"][0]?></a></span>
+                <span><a href="?command=building"><?=$_SESSION["searches"][1]?></a></span>
+                <span><a href="?command=building"><?=$_SESSION["searches"][2]?></a></span>
+                <span><a href="?command=building"><?=$_SESSION["searches"][3]?></a></span>
+                <span><a href="?command=building"><?=$_SESSION["searches"][4]?></a></span>
+                <span><a href="?command=building"><?=$_SESSION["searches"][5]?></a></span>
+                <span><a href="?command=building"><?=$_SESSION["searches"][6]?></a></span>
+                <span><a href="?command=building"><?=$_SESSION["searches"][7]?></a></span>
 
-        <!--search bar-->
-        <form class="search-wrap" action="?command=home" method="post">
-            <div class="search">
-                <img type="image" id="submit" class="search-button" src="./images/icons8-search.svg"
-                    alt="search button">
-                <input type="text" id="text-search" placeholder="Find a building" name="search">
-                <!--look into fontawesome.com-->
-            </div>
-        </form>
-
-        <!--    building suggestions -->
-        <div class="container">
-            <span> <a href="?command=building"><?=$_SESSION["searches"][0]?> </a></span>
-            <span> <a href="?command=building"><?=$_SESSION["searches"][1]?> </a></span>
-            <span> <a href="?command=building"><?=$_SESSION["searches"][2]?> </a></span>
-            <span> <a href="?command=building"><?=$_SESSION["searches"][3]?> </a></span>
-            <span> <a href="?command=building"><?=$_SESSION["searches"][4]?> </a></span>
-            <span> <a href="?command=building"><?=$_SESSION["searches"][5]?> </a></span>
-            <span> <a href="?command=building"><?=$_SESSION["searches"][6]?> </a></span>
-            <span> <a href="?command=building"><?=$_SESSION["searches"][7]?> </a></span>
-
-            <div class="row justify-content-center" style="margin: 10px;">
-                <a href="?command=jsonbuildings" role="button" style="width: auto; display: inline-block;">Buildings JSON</a>
+                <div class="row justify-content-center" style="margin: 10px;">
+                    <a href="?command=jsonbuildings" id="jsonbuildings" style="width: auto; display: inline-block;">Buildings JSON</a>
+                </div>
             </div>
         </div>
     </main>

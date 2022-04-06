@@ -21,10 +21,12 @@
                     <a class="nav-link active" aria-current="page" href="#">Secret Spots</a>
                 </li>
                 <!--Search bar-->
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Find a spot" aria-label="Search">
-                    <button class="btn btn-outline-dark" type="submit">Search</button>
-                </form>
+                <li class="nav-item">
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Find a spot" aria-label="Search">
+                        <button class="btn btn-outline-dark" type="submit">Search</button>
+                    </form>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">About</a>
                 </li>
@@ -36,20 +38,20 @@
             <!--User info and profile links-->
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false" style="color: black;">
                         Account
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <?php
                         if (isset($_SESSION["email"]))
                         {
-                            echo "<a class=\"dropdown-item\" aria-current=\"page\" href=\"?command=profile\">View Profile</a>\n";
-                            echo "<a class=\"dropdown-item\" aria-current=\"page\" href=\"?command=logout\">Logout</a>";
+                            echo "<li><a class=\"dropdown-item\" aria-current=\"page\" href=\"?command=profile\">View Profile</a></li>";
+                            echo "<li><a class=\"dropdown-item\" aria-current=\"page\" href=\"?command=logout\">Logout</a></li>";
                         }
                         else
                         {
-                            echo "<a class=\"dropdown-item\" aria-current=\"page\" href=\"?command=login\">Login</a>";
-                            echo "<a class=\"dropdown-item\" aria-current=\"page\" href=\"?command=createaccount\">Create Acc</a>";
+                            echo "<li><a class=\"dropdown-item\" aria-current=\"page\" href=\"?command=login\">Login</a></li>";
+                            echo "<li><a class=\"dropdown-item\" aria-current=\"page\" href=\"?command=createaccount\">Create Acc</a></li>";
                         }
                     ?>
                     </ul>
