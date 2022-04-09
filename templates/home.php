@@ -46,18 +46,19 @@
                 </div>
             </div>
         </div>
-        <div class="home row">
+        <div class="home row" style="width:40%;">
             <!--look into fontawesome.com-->
             <!--search bar-->
             <form class="search-wrap" action="?command=home" method="post">
                 <div class="mb-3">
-                    <input type="text" class="form-control" id="text-search" placeholder="Find a building" name="search" required>
                     <input type="image" id="submit" class="search-button" src="./images/icons8-search.svg"
-                        alt="search button">
+                                         alt="search button">
+                    <label for="text-search"></label><input style="width:90%; float: right;" type="text" class="form-control" id="text-search" placeholder="Find a building" name="search" required>
+
                 </div>
             </form>
         </div>
-        <div class="home row">
+        <div class="home row" style="width:40%;">
             <!--    building suggestions -->
             <div class="container">
                 <span><a href="?command=building&name=<?=$_SESSION["searches"][0]?>"><?=$_SESSION["searches"][0]?></a></span>
