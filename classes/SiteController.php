@@ -151,6 +151,7 @@ class SiteController {
     }
 
     public function home() {
+        //if a search as been made, add it to one of the 8 avaiable cards
         if(isset($_POST["search"])){
             array_unshift($_SESSION["searches"], $_POST["search"]);
            array_pop($_SESSION["searches"]);
@@ -171,6 +172,7 @@ class SiteController {
     }
 
     public function profile() {
+        //if a timezone is set, update the users timezone in their database
         if (isset($_POST["timezone"])) {
             $data = $this->db->query("update ss_user set timezone = ? where ss_user.id = ?;", "ss", $_POST["timezone"], $_POST["userid"]);
             $_SESSION['timezone'] = $_POST["timezone"];
@@ -182,12 +184,14 @@ class SiteController {
 
     // reference:  https://www.tutorialrepublic.com/faq/how-to-return-json-from-a-php-script.php
     public function jsonbuildings() {
+        //return building data as a json file
         $data = $this->db->query("select * from building");
         header("Content-Type: application/json");
         echo json_encode($data, JSON_PRETTY_PRINT);
     }
 
     public function logout() {
+
         session_destroy();
         setcookie("buildings", "", time()-7200);
         $rtn = json_encode($_SESSION["searches"]);

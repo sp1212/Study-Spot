@@ -7,6 +7,7 @@
 /*
  * Sources: https://www.php.net/manual/en/function.strpos.php
  * https://www.w3schools.com/php/php_json.asp
+ * // website: https://handy-resolver-346423.uk.r.appspot.com/
  */
 
 session_start();
