@@ -35,7 +35,7 @@
             </nav>
         </div>
         <div class="row bcr-name">
-            <h2>Rice Hall</h2>
+            <h2><?=$_GET["name"]?></h2>
         </div>
         <!--List of each classroom and availability within the building-->
         <div class="row">

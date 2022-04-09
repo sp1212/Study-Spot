@@ -45,6 +45,9 @@ class SiteController {
             case "jsonbuildings":
                 $this->jsonbuildings();
                 break;
+            case "buildinglist":
+                $this->buildinglist();
+                break;
             case "profile":
                 $this->profile();
                 break;
@@ -64,8 +67,8 @@ class SiteController {
     // Display the login page (and handle login logic)
     public function login() {
         //get the buildings list from the start
-        $data = $this->db->query("SELECT * FROM building");
-        setcookie("buildings", json_encode($data[0]), time() + 7200); //make sure cookie lasts as long as session
+        $_SESSION["buildings"] =  $this->db->query("SELECT * FROM building");
+//        setcookie("buildings", json_encode($data[0]), time() + 7200); //make sure cookie lasts as long as session
 
         $error_msg = "";
 
@@ -163,8 +166,12 @@ class SiteController {
         //store list of buildings as cookie array
     }
 
+    public function buildinglist() {
+        include ("templates/buildinglist.php");
+    }
+
     public function building() {
-        include("templates/building-sample.php");
+        include("templates/building.php");
     }
 
     public function classroom() {
@@ -193,7 +200,7 @@ class SiteController {
     public function logout() {
 
         session_destroy();
-        setcookie("buildings", "", time()-7200);
+//        setcookie("buildings", "", time()-7200);
         $rtn = json_encode($_SESSION["searches"]);
         $this->db->query("UPDATE ss_user SET searches=? WHERE id=?", "si", $rtn, $_SESSION["userid"]);
         header("Location: ?command=home");

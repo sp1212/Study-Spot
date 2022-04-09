@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<html>
     <head>
         <meta charset="UTF-8">  
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,7 +27,7 @@
                 <form action="?command=createaccount" method="post">
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name" name="name" required/>
+                        <input type="text" class="form-control" id="name" name="name" required autofocus/>
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>

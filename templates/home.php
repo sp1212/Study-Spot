@@ -60,18 +60,18 @@
         <div class="home row">
             <!--    building suggestions -->
             <div class="container">
-                <span><a href="?command=building"><?=$_SESSION["searches"][0]?></a></span>
-                <span><a href="?command=building"><?=$_SESSION["searches"][1]?></a></span>
-                <span><a href="?command=building"><?=$_SESSION["searches"][2]?></a></span>
-                <span><a href="?command=building"><?=$_SESSION["searches"][3]?></a></span>
-                <span><a href="?command=building"><?=$_SESSION["searches"][4]?></a></span>
-                <span><a href="?command=building"><?=$_SESSION["searches"][5]?></a></span>
-                <span><a href="?command=building"><?=$_SESSION["searches"][6]?></a></span>
-                <span><a href="?command=building"><?=$_SESSION["searches"][7]?></a></span>
+                <span><a href="?command=building&name=<?=$_SESSION["searches"][0]?>"><?=$_SESSION["searches"][0]?></a></span>
+                <span><a href="?command=building&name=<?=$_SESSION["searches"][1]?>"><?=$_SESSION["searches"][1]?></a></span>
+                <span><a href="?command=building&name=<?=$_SESSION["searches"][2]?>"><?=$_SESSION["searches"][2]?></a></span>
+                <span><a href="?command=building&name=<?=$_SESSION["searches"][3]?>"><?=$_SESSION["searches"][3]?></a></span>
+                <span><a href="?command=building&name=<?=$_SESSION["searches"][4]?>"><?=$_SESSION["searches"][4]?></a></span>
+                <span><a href="?command=building&name=<?=$_SESSION["searches"][5]?>"><?=$_SESSION["searches"][5]?></a></span>
+                <span><a href="?command=building&name=<?=$_SESSION["searches"][6]?>"><?=$_SESSION["searches"][6]?></a></span>
+                <span><a href="?command=building&name=<?=$_SESSION["searches"][7]?>"><?=$_SESSION["searches"][7]?></a></span>
 
-                <div class="row justify-content-center" style="margin: 10px;">
-                    <a href="?command=jsonbuildings" id="jsonbuildings" style="width: auto; display: inline-block;">Buildings JSON</a>
-                </div>
+<!--                <div class="row justify-content-center" style="margin: 10px;">-->
+<!--                    <a href="?command=jsonbuildings" id="jsonbuildings" style="width: auto; display: inline-block;">Buildings JSON</a>-->
+<!--                </div>-->
             </div>
         </div>
     </main>
