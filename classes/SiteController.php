@@ -171,11 +171,24 @@ class SiteController {
     }
 
     public function building() {
+        $data = $this->db->query("SELECT * FROM classroom WHERE building = ?;", "s", $_GET["name"]);
+        $timezone = new DateTimeZone($_SESSION['timezone']); //look for where this session variable is defined, make it a datetimezone
+        foreach ($data as $classroom) {
+            $timeHeld = array(new DateTime($classroom["start"], $timezone), new DateTime($classroom["end"], $timezone));
+            $classListTimes[$classroom["room"]][] = $timeHeld;
+//            echo "<h1>pushing new: " . $classroom["room"] . "!</h1>";
+
+        }
+        echo "<pre>";
+//                        print_r($_GET);
+//                        print_r($data[0]);
+//        print_r($classListTimes);
+        echo "</pre>";
         include("templates/building.php");
     }
 
     public function classroom() {
-        include("templates/classroom-sample.php");
+        include("templates/classroom.php");
     }
 
     public function profile() {

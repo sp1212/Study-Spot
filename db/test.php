@@ -9,8 +9,15 @@ $date1 = "Tu 6:00pm - 6:50pm";
 $date2 = "MoWe 2:00pm - 3:15pm";
 $date3 = "MoWeFr 10:00am - 10:50am";
 
-$temp = new DateTime("6:00pm");
+$temp = new DateTime("19:30:00");
+$temp2 = new DateTime("19:30:00.000000");
 echo $temp->format("Ga");
+echo $temp2->format("Ga");
+$value = $temp <= $temp2;
+if(!$value){
+    echo "hello";
+}
+echo "<h1> " . $value . "</h1>";
 
 // https://www.php.net/manual/en/datetime.format.php
 
@@ -53,6 +60,6 @@ echo $temp->format("Ga");
 //
 //    return $data;
 //}
-$temp = formatDate($date2);
-print_r($temp["date3"]);
-print_r($temp);
+//$temp = formatDate($date2);
+//print_r($temp["date3"]);
+//print_r($temp);

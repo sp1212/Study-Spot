@@ -12,7 +12,7 @@
     <meta name="author" content="Joey Elsisi, Stuart Paine">
     <meta name="description" content="Study Spot Project">
 
-    <title>Rice Hall</title>
+    <title><?=$_GET["name"]?></title>
 </head>
 
 <body>
@@ -43,58 +43,56 @@
 
             </div>
             <div class="col">
-                <div class="row cr-list-item open-list-item">
+                <?php
+                $now = new DateTime(null, new DateTimeZone($_SESSION['timezone']));
+                $status = "open";
+                $until = "Until";
+                foreach ($classListTimes as $room => $value){
+                    foreach($value as $key){
+                       if(($key[0] <= $now) && ($now <= $key[1])){
+                           $status = "closed";
+                           $until = "Until" . $key[1]->format("ga");
+                           break;
+                        }
+                       if($status == "closed"){
+                           break;
+                       }
+
+                    }
+
+                ?>
+                <div class="row cr-list-item <?=$status?>-list-item">
                     <a href="?command=classroom" title="Rice Hall 011"></a>
                     <div class="col-4 cr-name">
-                        Rice Hall 011
+                        <?=$room?>
                     </div>
-                    <div class="col-4 open">
-                        Open
-                    </div>
-                    <div class="col-4 until">
-                        Until 2:30pm
-                    </div>
-                </div>
-                <div class="row cr-list-item open-list-item">
-                    <a href="#" title="Rice Hall 123"></a>
-                    <div class="col-4 cr-name">
-                        Rice Hall 123
-                    </div>
-                    <div class="col-4 open">
-                        Open
-                    </div>
-                    <div class="col-4 until">
-                        Until 3:00pm
-                    </div>
-                </div>
-                <div class="row cr-list-item closed-list-item">
-                    <a href="#" title="Rice Hall 130"></a>
-                    <div class="col-4 cr-name">
-                        Rice Hall 130
-                    </div>
-                    <div class="col-4 in-use">
-                        In Use
+                    <div class="col-4 <?php
+                    if($status == "closed"){
+                        echo "in-use";
+                    } else {
+                        echo $status;
+                    }
+                    ?>
+                    ">
+                        <?php
+                        if($status == "open"){
+                            echo "Open";
+                        } else {
+                            echo "In Use";
+                        }
+                      ?>
                     </div>
                     <div class="col-4 until">
-                        Until 1:50pm
+                    <?=$until?>
                     </div>
                 </div>
-                <div class="row cr-list-item open-list-item">
-                    <a href="#" title="Rice Hall 340"></a>
-                    <div class="col-4 cr-name">
-                        Rice Hall 340
-                    </div>
-                    <div class="col-4 open">
-                        Open
-                    </div>
-                    <div class="col-4 until">
-                        Until 3:00pm
-                    </div>
-                </div>
+
+                <?php
+                }
+                ?>
                 <!--Page last updated info-->
                 <p class="as-of">
                     <?php
-                        $now = new DateTime(null, new DateTimeZone($_SESSION['timezone']));
                         echo "Updated " . $now->format('g:i:s A') . "<br>";
                     ?>
                     <a class="refresh" href="">(Refresh to update)</a>
