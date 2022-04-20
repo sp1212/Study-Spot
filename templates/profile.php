@@ -46,7 +46,7 @@
                         <input type="hidden" id="userid" name="userid" value="<?=$_SESSION['userid']?>">
                     </div>
                     <div class="text-center">                
-                        <button type="submit" class="btn btn-success">Update</button>
+                        <button type="submit" id="submitTimezone" class="btn btn-success">Update</button>
                     </div>
                 </form>
             </div>
@@ -63,6 +63,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
         </script>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript">
+        $('#submitTimezone').bind('click', function() {
+            alert("Your time zone is being updated to:  " + document.getElementById("timezone").value);
+        });
+    </script>
 </body>
 
 </html>
