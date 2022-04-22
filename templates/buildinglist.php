@@ -122,6 +122,9 @@
 
         </div>
     </div>
+    <div class="row justify-content-center" style="margin: 10px;">
+        <a href="?command=jsonbuildings" id="jsonbuildings" style="width: auto; display: inline-block;">Buildings JSON</a>
+    </div>
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"

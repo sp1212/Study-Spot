@@ -29,8 +29,8 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="?command=home">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Buildings</a></li>
-                    <li class="breadcrumb-item"><a href="?command=building">Rice Hall</a></li>
+                    <li class="breadcrumb-item"><a href="?command=buildinglist">Buildings</a></li>
+                    <li class="breadcrumb-item"><a href="#">Rice Hall</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Rice Hall 011</li>
                 </ol>
             </nav>
