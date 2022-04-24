@@ -69,10 +69,6 @@
                 <span><a href="?command=building&name=<?=$_SESSION["searches"][5]?>"><?=$_SESSION["searches"][5]?></a></span>
                 <span><a href="?command=building&name=<?=$_SESSION["searches"][6]?>"><?=$_SESSION["searches"][6]?></a></span>
                 <span><a href="?command=building&name=<?=$_SESSION["searches"][7]?>"><?=$_SESSION["searches"][7]?></a></span>
-
-<!--                <div class="row justify-content-center" style="margin: 10px;">-->
-<!--                    <a href="?command=jsonbuildings" id="jsonbuildings" style="width: auto; display: inline-block;">Buildings JSON</a>-->
-<!--                </div>-->
             </div>
         </div>
     </main>

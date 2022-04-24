@@ -154,7 +154,7 @@ class SiteController {
     }
 
     public function home() {
-        //if a search as been made, add it to one of the 8 avaiable cards
+        //if a search as been made, add it to one of the 8 available cards
         if(isset($_POST["search"])){
             array_unshift($_SESSION["searches"], $_POST["search"]);
            array_pop($_SESSION["searches"]);
