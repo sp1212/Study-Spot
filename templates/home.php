@@ -17,7 +17,7 @@
     <title>Home</title>
 </head>
 
-<body>
+<body onload="getBuildingList(getBuildings)">
     <header>
         <div id="top-navbar-placeholder">
             <?php include("top-navbar.php"); ?>
@@ -70,11 +70,77 @@
                 <span><a href="?command=building&name=<?=$_SESSION["searches"][7]?>"><?=$_SESSION["searches"][7]?></a></span>
             </div>
         </div>
+        <div class="home row">
+            <p>
+                <a class="btn btn-dark btn-sm" data-bs-toggle="collapse" href="#buildingsCollapse" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    All Buildings
+                </a>
+            </p>
+            <div class="collapse" id="buildingsCollapse">
+                <div class="card card-body" id="collapsedBuildingList">
+                    <b>Buildings</b>
+                </div>
+            </div>
+        </div>
     </main>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
-        </script>
+    </script>
+
+    <script>
+        var buildings = {
+            arr: []
+        };
+
+        function getBuildings(newList) {
+            buildings.arr = newList.sort(sortBuildings);
+            var list = document.getElementById("collapsedBuildingList");
+            for (var i = 0; i < buildings.arr.length; i++)
+            {
+                list.innerHTML += "<hr>" + buildings.arr[i].name + "<br>";
+            }
+        }
+
+        function sortBuildings (a, b)
+        {
+            return a.name.localeCompare(b.name);
+        }
+
+        function queryBuildings() {
+            return new Promise(resolve => {
+                // instantiate the object
+                var ajax = new XMLHttpRequest();
+                // open the request
+                ajax.open("GET", "?command=jsonbuildings", true);
+                // ask for a specific response
+                ajax.responseType = "json";
+                // send the request
+                ajax.send(null);
+
+                // What happens if the load succeeds
+                ajax.addEventListener("load", function () {
+                    // Return the list as the fulfillment of the promise 
+                    if (this.status == 200) { // worked 
+                        resolve(this.response);
+                    } else {
+                        console.log("When trying to get a new list of buildings, the server returned an HTTP error code.");
+                    }
+                });
+
+                // What happens on error
+                ajax.addEventListener("error", function () {
+                    console.log("When trying to get a new list of buildings, the connection to the server failed.");
+                });
+            });
+        }
+
+        async function getBuildingList(callback) {
+            var newList = await queryBuildings();
+            callback(newList);
+        }
+    </script>
 </body>
 
 </html>
