@@ -17,7 +17,7 @@
     <title>Home</title>
 </head>
 
-<body>
+<body onload="getBuildingList(getBuildings)">
     <header>
         <div id="top-navbar-placeholder">
             <?php include("top-navbar.php"); ?>
@@ -49,7 +49,7 @@
         <div class="home row" style="width:40%;">
             <!--look into fontawesome.com-->
             <!--search bar-->
-            <form class="search-wrap" action="?command=home" method="post">
+            <form class="search-wrap" action="?command=home" method="post" name="searchForm" onsubmit="return validateInput()">
                 <div class="mb-3">
                     <input type="image" id="submit" class="search-button" src="./images/icons8-search.svg"
                                          alt="search button">
@@ -71,11 +71,96 @@
                 <span><a href="?command=building&name=<?=$_SESSION["searches"][7]?>"><?=$_SESSION["searches"][7]?></a></span>
             </div>
         </div>
+        <div class="home row justify-content-center">
+            <p>
+                <a class="btn btn-dark btn-sm" data-bs-toggle="collapse" href="#buildingsCollapse" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    All Buildings
+                </a>
+            </p>
+            <div class="collapse" id="buildingsCollapse">
+                <div class="card card-body" id="collapsedBuildingList">
+                    <b>Buildings</b>
+                </div>
+            </div>
+        </div>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
-        </script>
+    </script>
+    <script>
+        var buildings = {
+            arr: [],
+            namesArr: []
+        };
+
+        // validate the search input by making sure it matches a building name
+        function validateInput()
+        {
+            let input = document.forms["searchForm"]["search"].value;
+            if (buildings.namesArr.indexOf(input) <= -1)
+            {
+                alert("Please enter a valid building name exactly as specified under the \"All Buildings\" button below.");
+                return false;
+            }
+        }
+
+        function getBuildings(newList) {
+            buildings.arr = newList.sort(sortBuildings);
+            var list = document.getElementById("collapsedBuildingList");
+            for (var i = 0; i < buildings.arr.length; i++)
+            {
+                // check for and remove trailing space from building names
+                if (buildings.arr[i].name.slice(-1).localeCompare(" ") == 0)
+                {
+                    buildings.arr[i].name = buildings.arr[i].name.slice(0, -1);
+                }
+                buildings.namesArr.push(String(buildings.arr[i].name));
+                list.innerHTML += "<hr>" + buildings.arr[i].name + "<br>";
+            }
+        }
+
+        // sort the list of buildings alphabetically
+        function sortBuildings (a, b)
+        {
+            return a.name.localeCompare(b.name);
+        }
+
+        // reference:  AJAX code provided for HW6
+        function queryBuildings() {
+            return new Promise(resolve => {
+                // instantiate the object
+                var ajax = new XMLHttpRequest();
+                // open the request
+                ajax.open("GET", "?command=jsonbuildings", true);
+                // ask for a specific response
+                ajax.responseType = "json";
+                // send the request
+                ajax.send(null);
+
+                // What happens if the load succeeds
+                ajax.addEventListener("load", function () {
+                    // Return the list as the fulfillment of the promise 
+                    if (this.status == 200) { // worked 
+                        resolve(this.response);
+                    } else {
+                        console.log("When trying to get a new list of buildings, the server returned an HTTP error code.");
+                    }
+                });
+
+                // What happens on error
+                ajax.addEventListener("error", function () {
+                    console.log("When trying to get a new list of buildings, the connection to the server failed.");
+                });
+            });
+        }
+
+        // reference:  AJAX code provided for HW6
+        async function getBuildingList(callback) {
+            var newList = await queryBuildings();
+            callback(newList);
+        }
+    </script>
 </body>
 
 </html>

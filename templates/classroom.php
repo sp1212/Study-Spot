@@ -78,6 +78,14 @@
                 <iframe
                     src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%2390cc90&ctz=America%2FNew_York&showNav=1&mode=WEEK&showTitle=0&showDate=1&showPrint=1&showTabs=1&showCalendars=0&showTz=1&src=b2Y5cWY2aXJyNGR2Z2o1cnZwbnNuZWZxNmdAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&color=%23E67C73"
                     style="width: 100%;" height="600" title="calendar"></iframe>
+                <!--Page last updated info-->
+                <p class="as-of">
+                    <?php
+                        $now = new DateTime(null, new DateTimeZone($_SESSION['timezone']));
+                        echo "Updated " . $now->format('g:i:s A') . "<br>";
+                    ?>
+                    <a class="refresh" href="">(Refresh to update)</a>
+                </p>
             </div>
             <!--Responsive column-->
             <div class="col-lg-1">
@@ -89,6 +97,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
         crossorigin="anonymous"></script>
+    <script>
+        setTimeout(function () { location.reload(true); }, 60000);
+    </script>
 </body>
 
 </html>
