@@ -49,7 +49,7 @@
         <div class="home row">
             <!--look into fontawesome.com-->
             <!--search bar-->
-            <form class="search-wrap" action="?command=home" method="post">
+            <form class="search-wrap" action="?command=home" method="post" name="searchForm" onsubmit="return validateInput()">
                 <div class="mb-3">
                     <input type="text" class="form-control" id="text-search" placeholder="Find a building" name="search" required>
                     <input type="image" id="submit" class="search-button" src="./images/icons8-search.svg"
@@ -70,7 +70,7 @@
                 <span><a href="?command=building&name=<?=$_SESSION["searches"][7]?>"><?=$_SESSION["searches"][7]?></a></span>
             </div>
         </div>
-        <div class="home row">
+        <div class="home row justify-content-center">
             <p>
                 <a class="btn btn-dark btn-sm" data-bs-toggle="collapse" href="#buildingsCollapse" role="button" aria-expanded="false" aria-controls="collapseExample">
                     All Buildings
@@ -84,30 +84,48 @@
         </div>
     </main>
 
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
     </script>
-
     <script>
         var buildings = {
-            arr: []
+            arr: [],
+            namesArr: []
         };
+
+        // validate the search input by making sure it matches a building name
+        function validateInput()
+        {
+            let input = document.forms["searchForm"]["search"].value;
+            if (buildings.namesArr.indexOf(input) <= -1)
+            {
+                alert("Please enter a valid building name exactly as specified under the \"All Buildings\" button below.");
+                return false;
+            }
+        }
 
         function getBuildings(newList) {
             buildings.arr = newList.sort(sortBuildings);
             var list = document.getElementById("collapsedBuildingList");
             for (var i = 0; i < buildings.arr.length; i++)
             {
+                // check for and remove trailing space from building names
+                if (buildings.arr[i].name.slice(-1).localeCompare(" ") == 0)
+                {
+                    buildings.arr[i].name = buildings.arr[i].name.slice(0, -1);
+                }
+                buildings.namesArr.push(String(buildings.arr[i].name));
                 list.innerHTML += "<hr>" + buildings.arr[i].name + "<br>";
             }
         }
 
+        // sort the list of buildings alphabetically
         function sortBuildings (a, b)
         {
             return a.name.localeCompare(b.name);
         }
 
+        // reference:  AJAX code provided for HW6
         function queryBuildings() {
             return new Promise(resolve => {
                 // instantiate the object
@@ -136,6 +154,7 @@
             });
         }
 
+        // reference:  AJAX code provided for HW6
         async function getBuildingList(callback) {
             var newList = await queryBuildings();
             callback(newList);
