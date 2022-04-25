@@ -156,14 +156,18 @@ class SiteController {
     public function home() {
         //if a search as been made, add it to one of the 8 available cards
         if(isset($_POST["search"])){
-            array_unshift($_SESSION["searches"], $_POST["search"]);
+           array_unshift($_SESSION["searches"], $_POST["search"]);
            array_pop($_SESSION["searches"]);
-           unset($_POST["search"]);
+            header("Location: ?command=building&name={$_POST["search"]}");
+           //include("templates/building.php");
+            unset($_POST["search"]);
 
+        } else {
+            unset($_POST["search"]);
+            include("templates/home.php");
+            //store list of buildings as cookie array
         }
-        unset($_POST["search"]);
-        include("templates/home.php");
-        //store list of buildings as cookie array
+
     }
 
     public function buildinglist() {
@@ -171,6 +175,9 @@ class SiteController {
     }
 
     public function building() {
+        if(!isset($_GET["name"])){
+            $_GET["name"] = $_SESSION["searches"][0];
+        }
         $data = $this->db->query("SELECT * FROM classroom WHERE building = ?;", "s", $_GET["name"]);
         $timezone = new DateTimeZone($_SESSION['timezone']); //look for where this session variable is defined, make it a datetimezone
         foreach ($data as $classroom) {

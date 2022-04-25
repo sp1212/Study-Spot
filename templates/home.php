@@ -53,7 +53,8 @@
                 <div class="mb-3">
                     <input type="image" id="submit" class="search-button" src="./images/icons8-search.svg"
                                          alt="search button">
-                    <label for="text-search"></label><input style="width:90%; float: right;" type="text" class="form-control" id="text-search" placeholder="Find a building" name="search" required>
+                    <label for="text-search"></label>
+                    <input style="width:90%; float: right;" type="text" class="form-control" id="text-search" placeholder="Find a building" name="search" required>
 
                 </div>
             </form>
