@@ -186,11 +186,11 @@ class SiteController {
 //            echo "<h1>pushing new: " . $classroom["room"] . "!</h1>";
 
         }
-        echo "<pre>";
+        //echo "<pre>";
 //                        print_r($_GET);
 //                        print_r($data[0]);
 //        print_r($classListTimes);
-        echo "</pre>";
+        //echo "</pre>";
         include("templates/building.php");
     }
 
