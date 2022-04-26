@@ -185,6 +185,7 @@ class SiteController {
     }
 
     public function classroom() {
+        Buildings::buildRoom($_GET["name"]);
         include("templates/classroom.php");
     }
 

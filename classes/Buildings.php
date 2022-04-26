@@ -20,7 +20,9 @@ class Buildings
     }
 
     public static function buildRoom($name){
-       self::$classList[$name] = new Classroom($name);
+        if(!isset(self::$classList[$name])){
+            self::$classList[$name] = new Classroom($name);
+        }
        self::$numClasses++;
     }
 }

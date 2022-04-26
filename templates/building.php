@@ -50,7 +50,7 @@
                 /*
                  * $classList[$name] returns a classroom object, we need to access it's properties
                  */
-                $classListTimes = Buildings::$classList[$name]->classListTimes;
+                $classListTimes = Buildings::$classList[$_GET["name"]]->classListTimes;
 //                echo "<pre>";
 //                print_r($classListTimes);
 //                echo "</pre>";
@@ -69,7 +69,7 @@
 
                 ?>
                 <div class="row cr-list-item <?=$status?>-list-item">
-                    <a href="?command=classroom" title="Rice Hall 011"></a>
+                    <a href="?command=classroom&name=<?=$_GET["name"]?>&classroom=<?=$room?>" title="Rice Hall 011"></a>
                     <div class="col-4 cr-name">
                         <?=$room?>
                     </div>
