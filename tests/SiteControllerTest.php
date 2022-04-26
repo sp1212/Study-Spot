@@ -51,11 +51,6 @@ class SiteControllerTest extends TestCase
 
     }
 
-    public function test__construct()
-    {
-
-    }
-
     public function testRun()
     {
 
