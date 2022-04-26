@@ -158,9 +158,8 @@ class SiteController {
         if(isset($_POST["search"])){
            array_unshift($_SESSION["searches"], $_POST["search"]);
            array_pop($_SESSION["searches"]);
-            header("Location: ?command=building&name={$_POST["search"]}");
-           //include("templates/building.php");
-            unset($_POST["search"]);
+           header("Location: ?command=building&name={$_POST["search"]}");
+           unset($_POST["search"]);
 
         } else {
             unset($_POST["search"]);
@@ -175,22 +174,13 @@ class SiteController {
     }
 
     public function building() {
+        //depending on where the request comes from, $_GET["name"] might not be set
         if(!isset($_GET["name"])){
             $_GET["name"] = $_SESSION["searches"][0];
         }
-        $data = $this->db->query("SELECT * FROM classroom WHERE building = ?;", "s", $_GET["name"]);
-        $timezone = new DateTimeZone($_SESSION['timezone']); //look for where this session variable is defined, make it a datetimezone
-        foreach ($data as $classroom) {
-            $timeHeld = array(new DateTime($classroom["start"], $timezone), new DateTime($classroom["end"], $timezone));
-            $classListTimes[$classroom["room"]][] = $timeHeld;
-//            echo "<h1>pushing new: " . $classroom["room"] . "!</h1>";
-
-        }
-        //echo "<pre>";
-//                        print_r($_GET);
-//                        print_r($data[0]);
-//        print_r($classListTimes);
-        //echo "</pre>";
+        //TODO: check global class list if classroom has been instnantiated, if not build it using Buildings method
+        $name = $_GET["name"];
+        Buildings::buildRoom($name);
         include("templates/building.php");
     }
 
@@ -218,12 +208,12 @@ class SiteController {
     }
 
     public function logout() {
-
         session_destroy();
 //        setcookie("buildings", "", time()-7200);
         $rtn = json_encode($_SESSION["searches"]);
         $this->db->query("UPDATE ss_user SET searches=? WHERE id=?", "si", $rtn, $_SESSION["userid"]);
         header("Location: ?command=home");
     }
+
 
 }

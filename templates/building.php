@@ -47,6 +47,13 @@
                 $now = new DateTime(null, new DateTimeZone($_SESSION['timezone']));
                 $status = "open";
                 $until = "Until";
+                /*
+                 * $classList[$name] returns a classroom object, we need to access it's properties
+                 */
+                $classListTimes = Buildings::$classList[$name]->classListTimes;
+//                echo "<pre>";
+//                print_r($classListTimes);
+//                echo "</pre>";
                 foreach ($classListTimes as $room => $value){
                     foreach($value as $key){
                        if(($key[0] <= $now) && ($now <= $key[1])){
