@@ -30,7 +30,7 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="?command=home">Home</a></li>
                     <li class="breadcrumb-item"><a href="?command=buildinglist">Buildings</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Rice Hall</li>
+                    <li class="breadcrumb-item active" aria-current="page"><?=$_GET["name"]?></li>
                 </ol>
             </nav>
         </div>
