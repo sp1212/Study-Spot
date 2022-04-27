@@ -133,7 +133,7 @@ tbody tr td {
     display: inline-block;
 }
 
-.event {
+.lecture {
     background: #017a3e;
     color: white;
     border-radius: 2px;
@@ -146,12 +146,12 @@ tbody tr td {
     cursor: pointer;
 }
 
-.event:hover {
+.lecture:hover {
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
     background: #00B4FC;
 }
 
-.event.double {
+.lecture.double {
     height: 200%;
 }
 

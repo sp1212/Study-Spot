@@ -135,7 +135,7 @@
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td><div class="event double"><input id="check" type="checkbox" class="checkbox" /><label for="check"></label>8:30–9:30 Yoga</div></td>
+                            <td><div class="lecture double"><input id="check" type="checkbox" class="checkbox" /><label for="check"></label>8:30–9:30 Unforgettable Lectures</div></td>
                             <td></td>
                             <td></td>
                         </tr>
@@ -163,7 +163,7 @@
                             <td class="timeCol">10:00 am</td>
                             <td></td>
                             <td></td>
-                            <td><div class="event double"><input id="check" type="checkbox" class="checkbox" /><label for="check"></label>10:00–11:00 Meeting</div></td>
+                            <td><div class="lecture double"><input id="check" type="checkbox" class="checkbox" /><label for="check"></label>10:00–11:00 Biology</div></td>
                             <td></td>
                             <td></td>
                             <td></td>
