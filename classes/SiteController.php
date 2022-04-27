@@ -45,6 +45,9 @@ class SiteController {
             case "secretspots":
                 $this->secretspots();
                 break;
+            case "about":
+                $this->about();
+                break;
             case "jsonbuildings":
                 $this->jsonbuildings();
                 break;
@@ -252,5 +255,9 @@ class SiteController {
         }
 
         include("templates/secretspots.php");
+    }
+
+    public function about() {
+        include("templates/about.php");
     }
 }
