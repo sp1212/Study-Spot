@@ -67,7 +67,7 @@ class SiteController {
     // Display the login page (and handle login logic)
     public function login() {
         //get the buildings list from the start
-        $_SESSION["buildings"] =  $this->db->query("SELECT * FROM building");
+        $_SESSION["buildings"] =  $this->db->query("SELECT * FROM building ORDER BY name");
 //        setcookie("buildings", json_encode($data[0]), time() + 7200); //make sure cookie lasts as long as session
 
         $error_msg = "";
@@ -133,6 +133,7 @@ class SiteController {
                 else {
                     $_SESSION["name"] = $_POST["name"];
                     $_SESSION["email"] = $_POST["email"];
+                    $_SESSION["buildings"] =  $this->db->query("SELECT * FROM building ORDER BY name");
                     $data = $this->db->query("select * from ss_user where email = ?;", "s", $_POST["email"]);
                     //setcookie("searches", $data[0]["searches"]); //their default searches
                     $searches = $data[0]["searches"];

@@ -37,7 +37,7 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="?command=home">Home</a></li>
                     <li class="breadcrumb-item"><a href="?command=buildinglist">Buildings</a></li>
-                    <li class="breadcrumb-item"><a href="#"><?=$_GET["name"]?></a></li>
+                    <li class="breadcrumb-item"><a href="?command=building&name=<?=$_GET["name"]?>"><?=$_GET["name"]?></a></li>
                     <li class="breadcrumb-item active" aria-current="page"><?=$_GET["classroom"]?></li>
                 </ol>
             </nav>
@@ -59,7 +59,7 @@
                     </div>
                     <div class="col-9">
                         <div class="row cr-list-item open-list-item">
-                            <a href="?command=classroom" title="current-status"></a>
+                            <a href="" title="current-status"></a>
                             <div class="col open">
                                 Open
                             </div>
