@@ -42,6 +42,9 @@ class SiteController {
             case "home":
                 $this->home();
                 break;
+            case "secretspots":
+                $this->secretspots();
+                break;
             case "jsonbuildings":
                 $this->jsonbuildings();
                 break;
@@ -217,5 +220,37 @@ class SiteController {
         header("Location: ?command=home");
     }
 
+    public function secretspots() {
+        $error_msg = "";
 
+        $data = $this->db->query("SELECT * FROM secretspot ORDER BY votes DESC");
+        if ($data === false) {
+            $error_msg = "Error checking for secret spots.";
+        }
+
+        if (isset($_POST["spot"])) {
+            $check = $this->db->query("SELECT * FROM secretspot WHERE name = ?;", "s", $_POST["spot"]);
+            if (empty($check))
+            {
+                $insert = $this->db->query("insert into secretspot (user_id, name, votes) values (?, ?, ?);", "sss", $_SESSION["userid"], $_POST["spot"], "0");
+                if ($insert === false) {
+                    $error_msg = "Error adding new secret spot.";
+                }
+                header("Location: ?command=secretspots");
+            }
+            else
+            {
+                $error_msg = "That secret spot already exists.";
+            }
+        }
+        else if (isset($_POST["upvote"])) {
+            $upvote = $this->db->query("UPDATE secretspot SET votes = votes + 1 WHERE name = ?;", "s", $_POST["upvote"]);
+            if ($upvote === false) {
+                $error_msg = "Error upvoting secret spot.";
+            }
+            header("Location: ?command=secretspots");
+        }
+
+        include("templates/secretspots.php");
+    }
 }
