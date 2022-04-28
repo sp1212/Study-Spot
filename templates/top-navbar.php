@@ -18,7 +18,7 @@
                     <a class="nav-link active" aria-current="page" href="?command=buildinglist">Buildings</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Secret Spots</a>
+                    <a class="nav-link active" aria-current="page" href="?command=secretspots">Secret Spots</a>
                 </li>
                 <!--Search bar-->
                 <li class="nav-item">
@@ -28,7 +28,7 @@
                     </form>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">About</a>
+                    <a class="nav-link active" aria-current="page" href="?command=about">About</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">Contact Us</a>

@@ -18,6 +18,9 @@ spl_autoload_register(function($classname) {
     include "classes/$classname.php";
 });
 
+//must instantiate this object once
+$buildings = new Buildings();
+
 // Parse the query string for command
 $command = "login";
 if (isset($_GET["command"]))
@@ -26,5 +29,3 @@ if (isset($_GET["command"]))
 // Instantiate the controller and run
 $controller = new SiteController($command);
 $controller->run();
-
-

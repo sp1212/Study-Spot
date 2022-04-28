@@ -47,22 +47,49 @@
                 $now = new DateTime(null, new DateTimeZone($_SESSION['timezone']));
                 $status = "open";
                 $until = "Until";
-                foreach ($classListTimes as $room => $value){
-                    foreach($value as $key){
-                       if(($key[0] <= $now) && ($now <= $key[1])){
-                           $status = "closed";
-                           $until = "Until " . $key[1]->format("g:ia");
-                           break;
+                /*
+                 * $classList[$name] returns a classroom object, we need to access it's properties
+                 */
+                $classListTimes = Buildings::$classList[$_GET["name"]]->classListTimes;
+//                echo "<pre>";
+//                print_r($classListTimes);
+//                echo "</pre>";
+                foreach ($classListTimes as $room => $dayList){
+//                    echo "<h1>" . $room . "</h1>";
+                    $dayName = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
+                    $currDay = $dayName[$now->format("w")];
+                    foreach($dayList as $dayHeld => $value){
+
+                        if($dayHeld == $currDay){
+//                            echo "<pre>";
+//                            print_r($value);
+//                            echo "</pre>";
+                            foreach ($value as $lecture){
+//                                echo "<pre>";
+//                                print_r($lecture);
+//                                echo "</pre>";
+                                //if a class is being held right now, status is closed and we can break the loop
+                                if(($lecture["start"] <= $now) && ($now <= $lecture["end"])){
+                                    $status = "closed";
+                                    $until = "Until " . $lecture["end"]->format("g:ia");
+                                    break;
+                                }
+                                //todo need to determine if there is a back-to-back class to say that the room is reserved until much later
+                                //todo not sure what the below code does
+                                if($status == "closed"){
+                                    break;
+                                }
+                                //might need to do html logic here now
+                            }
+
                         }
-                       if($status == "closed"){
-                           break;
-                       }
+
 
                     }
 
                 ?>
                 <div class="row cr-list-item <?=$status?>-list-item">
-                    <a href="?command=classroom" title="Rice Hall 011"></a>
+                    <a href="?command=classroom&name=<?=$_GET["name"]?>&classroom=<?=$room?>" title="Rice Hall 011"></a>
                     <div class="col-4 cr-name">
                         <?=$room?>
                     </div>

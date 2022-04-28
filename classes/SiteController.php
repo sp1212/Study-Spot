@@ -42,6 +42,12 @@ class SiteController {
             case "home":
                 $this->home();
                 break;
+            case "secretspots":
+                $this->secretspots();
+                break;
+            case "about":
+                $this->about();
+                break;
             case "jsonbuildings":
                 $this->jsonbuildings();
                 break;
@@ -67,7 +73,7 @@ class SiteController {
     // Display the login page (and handle login logic)
     public function login() {
         //get the buildings list from the start
-        $_SESSION["buildings"] =  $this->db->query("SELECT * FROM building");
+        $_SESSION["buildings"] =  $this->db->query("SELECT * FROM building ORDER BY name");
 //        setcookie("buildings", json_encode($data[0]), time() + 7200); //make sure cookie lasts as long as session
 
         $error_msg = "";
@@ -133,6 +139,7 @@ class SiteController {
                 else {
                     $_SESSION["name"] = $_POST["name"];
                     $_SESSION["email"] = $_POST["email"];
+                    $_SESSION["buildings"] =  $this->db->query("SELECT * FROM building ORDER BY name");
                     $data = $this->db->query("select * from ss_user where email = ?;", "s", $_POST["email"]);
                     //setcookie("searches", $data[0]["searches"]); //their default searches
                     $searches = $data[0]["searches"];
@@ -158,9 +165,8 @@ class SiteController {
         if(isset($_POST["search"])){
            array_unshift($_SESSION["searches"], $_POST["search"]);
            array_pop($_SESSION["searches"]);
-            header("Location: ?command=building&name={$_POST["search"]}");
-           //include("templates/building.php");
-            unset($_POST["search"]);
+           header("Location: ?command=building&name={$_POST["search"]}");
+           unset($_POST["search"]);
 
         } else {
             unset($_POST["search"]);
@@ -175,26 +181,18 @@ class SiteController {
     }
 
     public function building() {
+        //depending on where the request comes from, $_GET["name"] might not be set
         if(!isset($_GET["name"])){
             $_GET["name"] = $_SESSION["searches"][0];
         }
-        $data = $this->db->query("SELECT * FROM classroom WHERE building = ?;", "s", $_GET["name"]);
-        $timezone = new DateTimeZone($_SESSION['timezone']); //look for where this session variable is defined, make it a datetimezone
-        foreach ($data as $classroom) {
-            $timeHeld = array(new DateTime($classroom["start"], $timezone), new DateTime($classroom["end"], $timezone));
-            $classListTimes[$classroom["room"]][] = $timeHeld;
-//            echo "<h1>pushing new: " . $classroom["room"] . "!</h1>";
-
-        }
-        //echo "<pre>";
-//                        print_r($_GET);
-//                        print_r($data[0]);
-//        print_r($classListTimes);
-        //echo "</pre>";
+        //TODO: check global class list if classroom has been instnantiated, if not build it using Buildings method
+        $name = $_GET["name"];
+        Buildings::buildRoom($name);
         include("templates/building.php");
     }
 
     public function classroom() {
+        Buildings::buildRoom($_GET["name"]);
         include("templates/classroom.php");
     }
 
@@ -218,7 +216,6 @@ class SiteController {
     }
 
     public function logout() {
-
         session_destroy();
 //        setcookie("buildings", "", time()-7200);
         $rtn = json_encode($_SESSION["searches"]);
@@ -226,4 +223,41 @@ class SiteController {
         header("Location: ?command=home");
     }
 
+    public function secretspots() {
+        $error_msg = "";
+
+        $data = $this->db->query("SELECT * FROM secretspot ORDER BY votes DESC");
+        if ($data === false) {
+            $error_msg = "Error checking for secret spots.";
+        }
+
+        if (isset($_POST["spot"])) {
+            $check = $this->db->query("SELECT * FROM secretspot WHERE name = ?;", "s", $_POST["spot"]);
+            if (empty($check))
+            {
+                $insert = $this->db->query("insert into secretspot (user_id, name, votes) values (?, ?, ?);", "sss", $_SESSION["userid"], $_POST["spot"], "0");
+                if ($insert === false) {
+                    $error_msg = "Error adding new secret spot.";
+                }
+                header("Location: ?command=secretspots");
+            }
+            else
+            {
+                $error_msg = "That secret spot already exists.";
+            }
+        }
+        else if (isset($_POST["upvote"])) {
+            $upvote = $this->db->query("UPDATE secretspot SET votes = votes + 1 WHERE name = ?;", "s", $_POST["upvote"]);
+            if ($upvote === false) {
+                $error_msg = "Error upvoting secret spot.";
+            }
+            header("Location: ?command=secretspots");
+        }
+
+        include("templates/secretspots.php");
+    }
+
+    public function about() {
+        include("templates/about.php");
+    }
 }
