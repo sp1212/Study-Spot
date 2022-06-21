@@ -29,7 +29,11 @@
     <main>
         <?php
         $classListTimes = Buildings::$classList[$_GET["name"]]->classListTimes;
-//        print_r($classListTimes);
+        $classListTimes = $classListTimes[$_GET["classroom"]];
+        $dayName = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
+//        echo "<pre>";
+//        print_r( $classListTimes);
+//        echo "</pre>";
         ?>
         <!--Navigation route breadcrumb-->
         <div class="row">
@@ -95,7 +99,7 @@
                     </tr>
                     </thead>
                 </table>
-
+<!--                There are 26 rows in total -->
                 <div class="wrap">
                     <table>
                         <tbody>
